@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuryaCart | Solar-Powered Smart Cart</title>
+
+<style>
+:root {
+  --green:#176b45; --dark:#123b2b; --gold:#e6b84a;
+  --cream:#f5f8f1; --white:#fff; --muted:#63766a;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:Arial, sans-serif;
+  background:var(--cream); color:#20392c;
+}
+header {
+  background:linear-gradient(120deg,#103d2b,#218451);
+  color:white; padding:24px 6%;
+}
+.brand { font-size:27px; font-weight:800; letter-spacing:.5px; }
+.brand span { color:var(--gold); }
+header p { margin:8px 0 0; color:#e1eee5; }
+nav {
+  display:flex; gap:8px; flex-wrap:wrap; padding:12px 6%;
+  background:white; border-bottom:1px solid #dbe5dc;
+  position:sticky; top:0; z-index:5;
+}
+nav button {
+  border:0; background:#edf4ed; color:var(--dark);
+  padding:10px 14px; border-radius:9px; cursor:pointer;
+  font-weight:bold;
+}
+nav button.active, nav button:hover { background:var(--green); color:white; }
+main { max-width:1150px; margin:auto; padding:26px 5%; }
+section { display:none; }
+section.active { display:block; }
+h1 { font-size:clamp(28px,4vw,42px); margin:8px 0 12px; }
+h2 { color:var(--dark); }
+p { line-height:1.65; }
+.eyebrow { color:var(--green); font-weight:bold; text-transform:uppercase; letter-spacing:1.5px; font-size:12px; }
+.hero {
+  background:linear-gradient(135deg,#e2f1df,#fff8e6);
+  border:1px solid #d5e6d2; border-radius:22px;
+  padding:30px; display:grid; grid-template-columns:1.3fr 1fr;
+  gap:24px; align-items:center;
+}
+.hero-art {
+  min-height:210px; border-radius:18px; background:#d5ead1;
+  display:flex; align-items:center; justify-content:center;
+  font-size:90px; position:relative;
+}
+.sun { position:absolute; right:20px; top:15px; font-size:42px; }
+.actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.btn {
+  border:0; border-radius:10px; padding:12px 17px;
+  background:var(--green); color:white; cursor:pointer; font-weight:bold;
+}
+.btn.secondary { background:white; color:var(--green); border:1px solid var(--green); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin:20px 0; }
+.card {
+  background:white; border:1px solid #e0e8df; border-radius:15px;
+  padding:19px; box-shadow:0 4px 15px #153b2510;
+}
+.card .icon { font-size:28px; }
+.metric { font-size:29px; font-weight:800; color:var(--green); margin:8px 0; }
+.muted { color:var(--muted); font-size:14px; }
+.pill { display:inline-block; background:#e4f3e4; color:#176b45; padding:6px 10px; border-radius:30px; font-size:12px; font-weight:bold; }
+.progress { height:12px; background:#e7eee5; border-radius:20px; overflow:hidden; margin:12px 0; }
+.progress div { height:100%; width:0; background:linear-gradient(90deg,#278650,#e6b84a); transition:width .4s; }
+
+
+/* SURYACART PREMIUM DESIGN UPGRADE */
+body {
+  background: #f1f6ef;
+  color: #183c2b;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+header {
+  background: linear-gradient(125deg, #092e20, #18784b, #24985e);
+  padding: 30px 6%;
+  border-bottom: 4px solid #e5b84b;
+}
+.brand {
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+main {
+  max-width: 1250px;
+  padding-top: 34px;
+  padding-bottom: 55px;
+}
+.hero {
+  border: 1px solid #cbdcc9;
+  box-shadow: 0 12px 35px rgba(19, 70, 39, 0.09);
+  background: linear-gradient(135deg, #e0f1dc, #fffdf4);
+}
+.card {
+  border-radius: 18px;
+  border-color: #d9e6d7;
+  box-shadow: 0 7px 22px rgba(20, 60, 35, 0.07);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(20, 60, 35, 0.12);
+}
+nav {
+  box-shadow: 0 4px 12px rgba(20, 60, 35, 0.06);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+nav button {
+  transition: background .2s ease, color .2s ease;
+}
+.btn {
+  box-shadow: 0 4px 10px rgba(23, 107, 69, 0.15);
+  transition: transform .15s ease, background .15s ease;
+}
+.btn:hover {
+  background: #0e5234;
+  transform: translateY(-1px);
+}
+.btn.secondary:hover {
+  background: #e6f3e4;
+  color: #123b2b;
+}
+h1 {
+  letter-spacing: -1px;
+  line-height: 1.15;
+}
+h2 {
+  letter-spacing: -.3px;
+}
+.pill {
+  letter-spacing: .6px;
+}
+input[type="range"] {
+  accent-color: #218451;
+  cursor: pointer;
+}
+input[type="checkbox"] {
+  accent-color: #176b45;
+}
+::selection {
+  background: #d7edbd;
+  color: #123b2b;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">☀ SURYA<span>CART</span></div>
+  <p>Solar-powered cold-storage cart concept for street vendors</p>
+</header>
+<nav>
+  <button class="active" onclick="showPage('home',this)">Overview</button>
+  <button onclick="showPage('problem',this)">The Problem</button>
+  <button onclick="showPage('prototype',this)">Virtual Prototype</button>
+  <button onclick="showPage('simulation',this)">Simulation</button>
+  <button onclick="showPage('cost',this)">Cost & Feasibility</button>
+  <button onclick="showPage('impact',this)">Impact & Testing</button>
+  <button onclick="showPage('pitch',this)">Presentation</button>
+</nav>
+<main>
+<section id="home" class="active">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Innovation project • Smart agriculture</div>
+      <h1>Fresh produce.<br>Smarter energy.</h1>
+      <p>SuryaCart is a proposed mobile cart concept that combines solar energy and an insulated storage compartment to help street vendors keep fruits and vegetables fresher for longer.</p>
+      <span class="pill">CONCEPT PROTOTYPE</span>
+      <div class="actions">
+        <button class="btn" onclick="showPage('prototype',document.querySelectorAll('nav button')[2])">Explore the cart →</button>
+        <button class="btn secondary" onclick="showPage('pitch',document.querySelectorAll('nav button')[6])">Start presentation</button>
+      </div>
+    </div>
+    <div class="hero-art"><span class="sun">☀️</span>🛒</div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="icon">☀️</div><div class="metric">Solar</div><b>Renewable energy</b><p class="muted">A rooftop panel is proposed to supply power.</p></div>
+    <div class="card"><div class="icon">❄️</div><div class="metric">Cooling</div><b>Insulated storage</b><p class="muted">A cooling unit is a design option to evaluate.</p></div>
+    <div class="card"><div class="icon">🌱</div><div class="metric">Less waste</div><b>Potential benefit</b><p class="muted">The real impact must be measured in testing.</p></div>
+  </div>
+  <div class="card"><h2>Our mission</h2><p>Explore an affordable, practical cart concept for small vendors who need to protect perishable produce during the working day.</p></div>
+</section>
+<section id="problem">
+  <div class="eyebrow">01 • Understand the need</div>
+  <h1>The problem we want to solve</h1>
+  <div class="grid">
+    <div class="card"><div class="icon">🍅</div><h2>Perishable goods</h2><p>Heat can speed up the deterioration of many fruits and vegetables.</p></div>
+    <div class="card"><div class="icon">💸</div><h2>Possible income loss</h2><p>Produce that becomes unsellable can reduce a vendor's earnings.</p></div>
+    <div class="card"><div class="icon">🔌</div><h2>Power access</h2><p>A mobile vendor may not have convenient access to a reliable electricity supply.</p></div>
+  </div>
+  <div class="card"><h2>Our design question</h2><p><b>Can a solar-assisted, insulated mobile cart offer a practical way to help street vendors protect perishable produce?</b></p><p class="muted">These are problem statements to investigate, not claims that a survey or experiment has already proved them.</p></div>
+</section>
+
+<section id="prototype">
+  <div class="eyebrow">02 • Interactive design</div>
+  <h1>Explore the virtual cart</h1>
+  <p>Click each component to learn its proposed purpose.</p>
+  <div class="hero">
+    <div class="hero-art">☀️<span style="font-size:65px">🛒</span></div>
+    <div>
+      <h2>SuryaCart components</h2>
+      <button class="btn secondary" onclick="componentInfo('panel')">☀ Solar panel</button>
+      <button class="btn secondary" onclick="componentInfo('box')">📦 Insulated box</button>
+      <button class="btn secondary" onclick="componentInfo('cooling')">❄ Cooling unit</button>
+      <button class="btn secondary" onclick="componentInfo('battery')">🔋 Battery</button>
+      <div class="card" style="margin-top:15px">
+        <h3 id="partTitle">Select a component</h3>
+        <p id="partInfo">Learn how each proposed part could contribute to the design.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card"><h2>Design principle</h2><p>The solar panel may charge a battery or power suitable equipment through a properly designed electrical system. The insulation reduces heat transfer. Actual cooling performance depends on the equipment, weather, and available energy.</p></div>
+</section>
+
+<section id="simulation">
+  <div class="eyebrow">03 • Interactive simulation</div>
+  <h1>Try the energy controls</h1>
+  <p class="muted">This is a simplified illustrative model, not a real sensor reading or tested engineering result.</p>
+  <div class="grid">
+    <div class="card"><h3>Sunlight level</h3><div class="metric" id="sunValue">70%</div><input id="sunSlider" type="range" min="0" max="100" value="70" style="width:100%" oninput="updateSimulation()"><p class="muted">Move the slider to simulate different sunlight conditions.</p></div>
+    <div class="card"><h3>Cooling demand</h3><div class="metric" id="coolValue">50%</div><input id="coolSlider" type="range" min="0" max="100" value="50" style="width:100%" oninput="updateSimulation()"><p class="muted">A higher setting represents greater energy demand.</p></div>
+    <div class="card"><h3>Illustrative energy balance</h3><div class="metric" id="balance">+20</div><div class="progress"><div id="balanceBar"></div></div><p id="balanceText" class="muted">Calculating illustrative balance...</p></div>
+  </div>
+  <div class="card"><h2>What does this mean?</h2><p id="explanation">Change the sliders to explore the relationship between sunlight and cooling demand.</p><button class="btn" onclick="resetSimulation()">Reset simulation</button></div>
+</section>
+
+<section id="cost">
+  <div class="eyebrow">04 • Planning estimate</div>
+  <h1>Cost & feasibility</h1>
+  <p>Illustrative budget only. These are planning placeholders, not verified supplier quotations.</p>
+  <div class="card">
+    <table style="width:100%;border-collapse:collapse;text-align:left">
+      <thead><tr><th style="padding:10px;border-bottom:1px solid #ddd">Component</th><th style="padding:10px;border-bottom:1px solid #ddd">Estimated cost (₹)</th></tr></thead>
+      <tbody id="costRows">
+        <tr><td style="padding:10px">Cart frame and wheels</td><td style="padding:10px"><input type="number" min="0" value="5000" class="costInput" style="width:100px" oninput="updateCost()"></td></tr>
+        <tr><td style="padding:10px">Insulated storage box</td><td style="padding:10px"><input type="number" min="0" value="2500" class="costInput" style="width:100px" oninput="updateCost()"></td></tr>
+        <tr><td style="padding:10px">Solar panel</td><td style="padding:10px"><input type="number" min="0" value="3000" class="costInput" style="width:100px" oninput="updateCost()"></td></tr>
+        <tr><td style="padding:10px">Battery and controller</td><td style="padding:10px"><input type="number" min="0" value="3500" class="costInput" style="width:100px" oninput="updateCost()"></td></tr>
+        <tr><td style="padding:10px">Cooling and wiring</td><td style="padding:10px"><input type="number" min="0" value="4000" class="costInput" style="width:100px" oninput="updateCost()"></td></tr>
+      </tbody>
+    </table>
+    <h2>Illustrative total: ₹<span id="totalCost">18000</span></h2>
+    <p class="muted">Use local quotes and check that the panel, battery, controller, and cooling load are electrically compatible before proposing a build.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Practicality</h3><p>Assess cart weight, manoeuvrability, cleaning, and weather protection.</p></div>
+    <div class="card"><h3>Energy needs</h3><p>Estimate daily energy use and compare it with panel output and battery capacity.</p></div>
+    <div class="card"><h3>Food safety</h3><p>Choose appropriate storage temperatures for each type of produce.</p></div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="eyebrow">05 • Measure before claiming</div>
+  <h1>Impact & testing plan</h1>
+  <div class="grid">
+    <div class="card"><div class="icon">🌡️</div><h2>Temperature</h2><p>Record the storage temperature at regular intervals.</p></div>
+    <div class="card"><div class="icon">⚡</div><h2>Energy</h2><p>Measure panel output and the energy consumed by the cooling system.</p></div>
+    <div class="card"><div class="icon">🥬</div><h2>Produce quality</h2><p>Compare produce condition over the same period under fair conditions.</p></div>
+  </div>
+  <div class="card">
+    <h2>Proposed evaluation checklist</h2>
+    <label><input type="checkbox"> Collect component price quotations</label><br><br>
+    <label><input type="checkbox"> Calculate the expected daily energy requirement</label><br><br>
+    <label><input type="checkbox"> Check insulation and cooling suitability</label><br><br>
+    <label><input type="checkbox"> Conduct a controlled test if a prototype is built</label><br><br>
+    <label><input type="checkbox"> Gather vendor feedback with permission</label>
+    <p class="muted">Do not present these checks as completed unless they have actually been done.</p>
+  </div>
+</section>
+
+<section id="pitch">
+  <div class="eyebrow">06 • Guided presentation</div>
+  <h1 id="slideTitle">SuryaCart: The idea</h1>
+  <div class="card" style="padding:28px">
+    <span class="pill" id="slideCount">SLIDE 1 OF 6</span>
+    <h2 id="slideHeading" style="font-size:28px">A smarter cart concept</h2>
+    <p id="slideText">A proposed solar-assisted insulated cart designed to explore ways of protecting perishable produce for street vendors.</p>
+    <div class="progress"><div id="slideBar" style="width:16.67%"></div></div>
+    <div class="actions">
+      <button class="btn secondary" onclick="changeSlide(-1)">← Previous</button>
+      <button class="btn" onclick="changeSlide(1)">Next slide →</button>
+    </div>
+  </div>
+  <div class="card"><h2>Project group</h2><p><b>Haryaksh · Gagan · Kunal · Ayush · Dibyajyothi</b></p><p class="muted">Present the problem, explain the proposed design, demonstrate the simulation, and clearly distinguish estimates from verified results.</p></div>
+</section>
+</main>
+</main>
+
+<script>
+function showPage(id, button) {
+  document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  if (button) button.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function componentInfo(part) {
+  const info = {
+    panel: ['Solar panel', 'A rooftop photovoltaic panel could convert sunlight into electrical energy. Actual output depends on panel rating, sunlight, angle, and shade.'],
+    box: ['Insulated storage box', 'Insulation slows heat transfer from the surrounding environment. It does not actively cool produce by itself.'],
+    cooling: ['Cooling unit', 'A suitable cooling unit could help maintain the intended storage temperature, but its power requirements must be calculated first.'],
+    battery: ['Battery and controller', 'A correctly matched battery and charge controller could store and manage energy. Electrical safety and component compatibility are essential.']
+  };
+  document.getElementById('partTitle').textContent = info[part][0];
+  document.getElementById('partInfo').textContent = info[part][1];
+}
+
+function updateSimulation() {
+  const sun = Number(document.getElementById('sunSlider').value);
+  const cooling = Number(document.getElementById('coolSlider').value);
+  const balance = sun - cooling;
+  document.getElementById('sunValue').textContent = sun + '%';
+  document.getElementById('coolValue').textContent = cooling + '%';
+  document.getElementById('balance').textContent = (balance > 0 ? '+' : '') + balance;
+  document.getElementById('balanceBar').style.width = Math.abs(balance) + '%';
+  let message;
+  if (balance > 10) {
+    message = 'Illustrative supply exceeds the selected demand.';
+  } else if (balance < -10) {
+    message = 'Illustrative demand exceeds the selected supply.';
+  } else {
+    message = 'Illustrative supply and demand are relatively close.';
+  }
+  document.getElementById('balanceText').textContent = message;
+  document.getElementById('explanation').textContent =
+    'Sunlight setting: ' + sun + '%. Cooling demand setting: ' + cooling +
+    '%. This simplified balance is a learning aid, not a prediction of real power or cooling.';
+}
+
+function resetSimulation() {
+  document.getElementById('sunSlider').value = 70;
+  document.getElementById('coolSlider').value = 50;
+  updateSimulation();
+}
+
+function updateCost() {
+  let total = 0;
+  document.querySelectorAll('.costInput').forEach(input => {
+    total += Math.max(0, Number(input.value) || 0);
+  });
+  document.getElementById('totalCost').textContent = total.toLocaleString('en-IN');
+}
+
+const slides = [
+  ['SuryaCart: The idea','A smarter cart concept','A proposed solar-assisted insulated cart designed to explore ways of protecting perishable produce for street vendors.'],
+  ['The problem','Protecting fresh produce','Heat can affect produce quality. Mobile vendors may face practical challenges in keeping perishable items in suitable conditions.'],
+  ['Our solution','Solar-assisted storage','The concept combines a solar panel, an insulated compartment, a suitable cooling option, and a carefully matched energy system.'],
+  ['How it could work','From sunlight to storage','A panel generates electricity. A suitable controller manages charging, while a compatible battery may provide stored energy when sunlight is limited.'],
+  ['Feasibility and testing','Measure before deciding','Component quotations, energy calculations, temperature monitoring, and controlled testing are needed to assess whether the design is practical.'],
+  ['Conclusion','An idea to investigate','SuryaCart explores how renewable energy and thoughtful storage design might help small vendors. The next step is to test feasibility and learn from vendors.']
+];
+let currentSlide = 0;
+
+function changeSlide(step) {
+  currentSlide = Math.max(0, Math.min(slides.length - 1, currentSlide + step));
+  document.getElementById('slideTitle').textContent = slides[currentSlide][0];
+  document.getElementById('slideHeading').textContent = slides[currentSlide][1];
+  document.getElementById('slideText').textContent = slides[currentSlide][2];
+  document.getElementById('slideCount').textContent =
+    'SLIDE ' + (currentSlide + 1) + ' OF ' + slides.length;
+  document.getElementById('slideBar').style.width =
+    ((currentSlide + 1) / slides.length * 100) + '%';
+}
+
+updateSimulation();
+updateCost();
+</script>
+</body>
+</html>
+</body>
+</html>
